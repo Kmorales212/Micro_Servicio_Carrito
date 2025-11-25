@@ -1,0 +1,36 @@
+package com.example.carrito.controller;
+
+import com.example.carrito.model.CartItem;
+import com.example.carrito.service.CartItemService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/cart")
+public class CartItemController {
+
+    @Autowired
+    private CartItemService cartItemService;
+
+    @GetMapping("/{userId}")
+    public ResponseEntity<List<CartItem>> getCart(@PathVariable Long userId) {
+        return ResponseEntity.ok(cartItemService.getCartByUserId(userId));
+    }
+    
+    @PostMapping("/{userId}/add")
+    public ResponseEntity<CartItem> addItemToCart(@PathVariable Long userId, @RequestParam Long productId, @RequestParam(defaultValue = "1") int quantity) {
+        
+        CartItem savedItem = cartItemService.addOrUpdateItem(userId, productId, quantity);
+        return new ResponseEntity<>(savedItem, HttpStatus.CREATED);
+    }
+    
+    @DeleteMapping("/{itemId}")
+    public ResponseEntity<Void> deleteItem(@PathVariable Long itemId) {
+        cartItemService.deleteItem(itemId);
+        return ResponseEntity.noContent().build();
+    }
+}
