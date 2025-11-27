@@ -7,8 +7,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-@ComponentScan(basePackages = "com.example.carrito")
-@EnableJpaRepositories(basePackages = "com.example.carrito.repository")
+@ComponentScan(basePackages = "com.example.Micro_Servicio_Carrito")
+@EnableJpaRepositories(basePackages = "com.example.Micro_Servicio_Carrito.repository")
 public class MicroServicioCarritoApplication { 
 
     public static void main(String[] args) {

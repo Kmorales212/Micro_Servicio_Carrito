@@ -1,4 +1,4 @@
-package com.example.carrito.model;
+package com.example.Micro_Servicio_Carrito.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,7 +12,7 @@ import lombok.AllArgsConstructor;
 @Data 
 @NoArgsConstructor 
 @AllArgsConstructor 
-public class CartItem {
+public class CartItemModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
